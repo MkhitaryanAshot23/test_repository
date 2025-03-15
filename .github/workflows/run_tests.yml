@@ -1,34 +1,34 @@
-name: Run Pytest on Push
+name: Run Pytest on Push  # Название workflow, которое будет отображаться в GitHub Actions.
 
-on:
-  push:
+on:  # Определяет события, которые запускают этот workflow.
+  push:  # Запускать workflow при пуше (push) в репозиторий.
     branches:
-      - main
-  pull_request:
+      - main  # Только для изменений в ветке main.
+  pull_request:  # Запускать workflow при создании или обновлении pull request'а.
     branches:
-      - main
+      - main  # Только для pull request'ов в ветку main.
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
+jobs:  # Определяет задачи (jobs), которые будут выполняться в рамках workflow.
+  test:  # Имя задачи (job). В данном случае это "test".
+    runs-on: ubuntu-latest  # Указывает операционную систему для выполнения задачи. Здесь используется последняя версия Ubuntu.
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    steps:  # Определяет шаги (steps), которые будут выполняться в рамках задачи.
+    - name: Checkout code  # Название шага: "Checkout code" (клонирование кода).
+      uses: actions/checkout@v4  # Используется действие (action) для клонирования репозитория на виртуальную машину.
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
+    - name: Set up Python  # Название шага: "Set up Python" (настройка Python).
+      uses: actions/setup-python@v5  # Используется действие для установки Python на виртуальную машину.
+      with:  # Параметры для действия.
+        python-version: '3.10'  # Указывает версию Python, которая будет использоваться (в данном случае 3.10).
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+    - name: Install dependencies  # Название шага: "Install dependencies" (установка зависимостей).
+      run: |  # Выполняет команды в терминале.
+        python -m pip install --upgrade pip  # Обновляет pip до последней версии.
+        pip install -r requirements.txt  # Устанавливает зависимости из файла requirements.txt.
 
-    - name: Run pytest
-      run: |
-        pytest test/
+    - name: Run pytest  # Название шага: "Run pytest" (запуск тестов).
+      run: |  # Выполняет команды в терминале.
+        pytest test/  # Запускает тесты в папке test/ с помощью pytest.
 
 # name: Run Pytest Manually
 
