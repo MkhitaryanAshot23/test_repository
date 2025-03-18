@@ -1,7 +1,6 @@
 # В этот файл мы выносим функцию с декоратором @pytest.fixture()
 # У файла должно быть название conftest.py
 
-from math import sqrt
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options # Этот модуль позволяет запускать тесты в безголовом режиме (без запуска браузера)
 import pytest
